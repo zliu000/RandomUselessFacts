@@ -20,7 +20,9 @@ class NetworkClient {
     /** True = en, (default); False = de **/
     private var language: Bool = true
     
-    private var fact: UselessFact
+    private(set) var currentFact: UselessFact = UselessFact(id: "", text: "")
+        
+    private(set) var selectedFact: UselessFactDetail = UselessFactDetail(source: "", source_url: "")
     
     func getUselessFact(endpoint: FactAPIType) async {
         var urlStr: String = ""
@@ -38,7 +40,26 @@ class NetworkClient {
         do {
             let (data, response) = try await URLSession.shared.data(from: urlUnwrapped)
             
+            let factResponse : UselessFact = try JSONDecoder().decode(UselessFact.self, from: data)
             
+            currentFact = factResponse
+            
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func getUselessFactDetails(factID: String) async {
+        let url = URL(string: "https://uselessfacts.jsph.pl/api/v2/facts/\(factID)")
+        
+        guard let urlUnwrapped = url else {
+            return
+        }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: urlUnwrapped)
+            let details = try JSONDecoder().decode(UselessFactDetail.self, from: data)
+        } catch let error {
+            print(error)
         }
     }
 }
