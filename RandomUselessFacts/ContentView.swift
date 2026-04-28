@@ -1,18 +1,48 @@
 import SwiftUI
 
+let dailyGradient: [Color] = [
+    .dailyFactTop,
+    .dailyFactBottom
+]
+
+
 struct ContentView: View {
     let model: AppModel
     
     var body: some View {
         NavigationStack{
-            
+            DailyScreenView()
+            TinderView()
+                .transition(.push(from: .trailing))
+            FavoritesView()
         }
     }
 }
 
 struct DailyScreenView: View {
     var body: some View {
-        
+        ZStack{
+            HStack{
+                Text("Fact of the Day!")
+                    .font(.title3)
+                    .monospaced()
+            }
+            .padding()
+            .background(Color.white)
+            .offset(y:-200)
+            Button("Tap to meet your match"){
+                NavigationLink(destination: {TinderView()}, label:{
+                    Text("Tap to meet your match")
+                } )
+            }
+            .tint(Color.black)
+            .background(Color.white)
+            .buttonStyle(.borderedProminent)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .offset(y:250)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Gradient(colors: dailyGradient))
     }
 }
 
