@@ -1,17 +1,12 @@
-//
-//  RandomUselessFactsApp.swift
-//  RandomUselessFacts
-//
-//  Created by Student on 4/27/26.
-//
-
 import SwiftUI
 
 @main
 struct RandomUselessFactsApp: App {
+    @State private var appModel = AppModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(model: appModel)
         }
     }
 }

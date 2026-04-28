@@ -1,24 +1,33 @@
-//
-//  ContentView.swift
-//  RandomUselessFacts
-//
-//  Created by Student on 4/27/26.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    let model: AppModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack{
+            
         }
-        .padding()
+    }
+}
+
+struct DailyScreenView: View {
+    var body: some View {
+        
+    }
+}
+
+struct TinderView: View {
+    var body: some View {
+        
+    }
+}
+
+struct FavoritesView: View {
+    var body: some View {
+        
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(model: AppModel())
 }
