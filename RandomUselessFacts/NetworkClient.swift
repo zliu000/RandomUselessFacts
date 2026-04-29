@@ -38,7 +38,7 @@ class NetworkClient {
             return
         }
         do {
-            let (data, response) = try await URLSession.shared.data(from: urlUnwrapped)
+            let (data, _) = try await URLSession.shared.data(from: urlUnwrapped)
             
             let factResponse : UselessFact = try JSONDecoder().decode(UselessFact.self, from: data)
             
@@ -58,6 +58,8 @@ class NetworkClient {
         do {
             let (data, _) = try await URLSession.shared.data(from: urlUnwrapped)
             let details = try JSONDecoder().decode(UselessFactDetail.self, from: data)
+            
+            selectedFact = details
         } catch let error {
             print(error)
         }
