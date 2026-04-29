@@ -12,14 +12,12 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
             DailyScreenView()
-            TinderView()
-                .transition(.push(from: .trailing))
-            FavoritesView()
         }
     }
 }
 
 struct DailyScreenView: View {
+    @State private var client = NetworkClient()
     @State private var showDetailView = false
     var body: some View {
         ZStack{
@@ -30,10 +28,25 @@ struct DailyScreenView: View {
             }
             .padding()
             .background(Color.white)
+            .border(.black, width: 2)
             .offset(y:-200)
+
+            HStack{
+                Text(client.currentFact.text)
+                    .font(.title3)
+                    .monospaced()
+                    .task{
+                        await client.getUselessFact(endpoint: .daily)
+                    }
+            }
+            .padding()
+            .background(Color.white)
+            .border(.black, width: 5)
+
             Button("Tap to meet your match"){
                 showDetailView = true
             }
+            .monospaced()
             .tint(Color.black)
             .background(Color.white)
             .buttonStyle(.borderedProminent)
@@ -49,8 +62,39 @@ struct DailyScreenView: View {
 }
 
 struct TinderView: View {
+    @State private var client = NetworkClient()
+    
     var body: some View {
         
+        ZStack{
+            HStack{
+                Text(client.currentFact.text)
+                    .font(.title3)
+                    .monospaced()
+                    .task{
+                        await client.getUselessFact(endpoint: .random)
+                        let factID = client.currentFact.id
+                        await client.getUselessFactDetails(factID: factID)
+                    }
+            }
+            .padding()
+            .background(Color.white)
+            .border(.black, width: 5)
+            .offset(y:-200)
+            let description = client.selectedFact.source.description
+            HStack{
+                Text(description)
+                    .font(.title3)
+                    .monospaced()
+            }
+            .padding()
+            .background(Color.white)
+            .border(.black, width: 5)
+            .offset(y:-200)
+
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.factSwipe)
     }
 }
 
