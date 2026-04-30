@@ -15,11 +15,6 @@ enum FactAPIType {
 
 @Observable
 class NetworkClient {
-    
-    // Temporarily boolean for languages
-    /** True = en, (default); False = de **/
-    private var language: Bool = true
-    
     private(set) var currentFact: UselessFact = UselessFact(id: "", text: "")
         
     private(set) var selectedFact: UselessFactDetail = UselessFactDetail(source: "", source_url: "")
@@ -28,8 +23,8 @@ class NetworkClient {
         var urlStr: String = ""
         
         switch endpoint {
-        case .daily: urlStr = "https://uselessfacts.jsph.pl/api/v2/facts/today?language=\(language ? "en" : "de")"
-        case .random: urlStr = "https://uselessfacts.jsph.pl/api/v2/facts/random?language=\(language ? "en" : "de")"
+        case .daily: urlStr = "https://uselessfacts.jsph.pl/api/v2/facts/today?language=en"
+        case .random: urlStr = "https://uselessfacts.jsph.pl/api/v2/facts/random?language=en"
         }
         
         let url: URL? = URL(string: urlStr)
