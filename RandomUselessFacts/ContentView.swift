@@ -63,6 +63,8 @@ struct DailyScreenView: View {
 
 struct TinderView: View {
     @State private var client = NetworkClient()
+    @State private var value = true
+    @State private var scale = 1.0
     
     var body: some View {
         
@@ -90,7 +92,29 @@ struct TinderView: View {
             .padding()
             .background(Color.white)
             .border(.black, width: 5)
-            .offset(y:-200)
+            HStack{
+                Image(systemName: "heart.fill")    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(value ? .gray : .red)
+                    .frame(width: 70, height: 70)
+                    .animation(.bouncy(duration: 0.5, extraBounce: 2.0), value: scale)
+                    .onTapGesture {
+                        value.toggle()
+                        scale = 2.0
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            scale = 1.0
+                        }
+                    }
+                    .animation(.bouncy(duration: 0.5), value: value)
+                 
+
+                Image(systemName: "xmark")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60, height: 60)
+            }
+            .offset(y:200)
 
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
