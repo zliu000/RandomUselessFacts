@@ -9,6 +9,13 @@ class AppModel {
         return favoritedFacts
     }
     
+    func isFavoritedFact(fact: UselessFact) -> Bool {
+        for favoritedFact in favoritedFacts {
+            if fact.id == favoritedFact.id {
+                return true
+            }
+        }
+        return false
     func heartPressed(){
         value.toggle()
     }
