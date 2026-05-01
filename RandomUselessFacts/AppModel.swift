@@ -8,6 +8,15 @@ class AppModel {
         return favoritedFacts
     }
     
+    func isFavoritedFact(fact: UselessFact) -> Bool {
+        for favoritedFact in favoritedFacts {
+            if fact.id == favoritedFact.id {
+                return true
+            }
+        }
+        return false
+    }
+    
     // When displaying the new randomly fetched fact
     // Check if it's already been favorited or not
     func addFavoritedFacts(favorite: UselessFact) {
