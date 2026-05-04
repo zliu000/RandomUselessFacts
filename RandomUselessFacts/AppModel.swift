@@ -4,7 +4,7 @@ import SwiftUI
 class AppModel {
     private(set) var favoritedFacts: [UselessFact] = []
     private(set) var value = true
-
+    
     func getFavoritedFacts() -> [UselessFact]{
         return favoritedFacts
     }
@@ -16,21 +16,22 @@ class AppModel {
             }
         }
         return false
-    func heartPressed(){
-        value.toggle()
-    }
-    
-    func xPressed(){
+        func heartPressed(){
+            value.toggle()
+        }
         
-    }
-    
-    // When displaying the new randomly fetched fact
-    // Check if it's already been favorited or not
-    func addFavoritedFacts(favorite: UselessFact) {
-        favoritedFacts.append(favorite)
-    }
-    
-    func removeFavoritedFacts(idx: Int) {
-        favoritedFacts.remove(at: idx)
+        func xPressed(){
+            
+        }
+        
+        // When displaying the new randomly fetched fact
+        // Check if it's already been favorited or not
+        func addFavoritedFacts(favorite: UselessFact) {
+            favoritedFacts.append(favorite)
+        }
+        
+        func removeFavoritedFacts(idx: Int) {
+            favoritedFacts.remove(at: idx)
+        }
     }
 }
