@@ -16,6 +16,7 @@ class AppModel {
             }
         }
         return false
+    }
         func heartPressed(){
             value.toggle()
         }
@@ -34,4 +35,3 @@ class AppModel {
             favoritedFacts.remove(at: idx)
         }
     }
-}

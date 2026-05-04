@@ -13,58 +13,31 @@ struct NewTinderView: View {
     @State private var scale = 1.0
     
     var body: some View {
-        
-//        ZStack{
-//            HStack{
-//                Text(client.currentFact.text)
-//                    .font(.title3)
-//                    .monospaced()
-//                    .task{
-//                        await client.getUselessFact(endpoint: .random)
-//                        let factID = client.currentFact.id
-//                        await client.getUselessFactDetails(factID: factID)
-//                    }
-//            }
-//            .padding()
-//            .background(Color.white)
-//            .border(.black, width: 5)
-//            .offset(y:-200)
-//            let description = client.selectedFact.source_url
-//            HStack{
-//                Text(description)
-//                    .font(.title3)
-//                    .monospaced()
-//            }
-//            .padding()
-//            .background(Color.white)
-//            .border(.black, width: 5)
-//            HStack{
-//                Image(systemName: "heart.fill")    .resizable()
-//                    .scaledToFit()
-//                    .foregroundStyle(value ? .gray : .red)
-//                    .frame(width: 70, height: 70)
-//                    .animation(.bouncy(duration: 0.5, extraBounce: 2.0), value: scale)
-//                    .onTapGesture {
-//                        value.toggle()
-//                        scale = 2.0
-//                        
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                            scale = 1.0
-//                        }
-//                    }
-//                    .animation(.bouncy(duration: 0.5), value: value)
-//                 
-//
-//                Image(systemName: "xmark")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: 60, height: 60)
-//            }
-//            .offset(y:200)
-//
-//        }
-//        .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        .background(Color.factSwipe)
+        ZStack{
+            VStack{
+                Spacer()
+                
+                FactDisplay(fact: "hauifhwui lorjeiwfhoiwajfowojafiheoifhoiw")
+                
+                Spacer()
+                
+                HStack(
+                    alignment: .center,
+                    spacing: 35
+                ){
+                    // Placeholders for the buttons
+                    Rectangle()
+                        .frame(width: 100, height: 100)
+                    // Info button
+                    Rectangle()
+                        .frame(width: 50, height: 50)
+                    
+                    Rectangle()
+                        .frame(width: 100, height: 100)
+                }
+                .padding()
+            }
+        }
     }
 }
 
@@ -76,7 +49,8 @@ struct FactDisplay: View {
             alignment: .center
         ){
             Text(fact)
-                .font(.title3)
+                .font(.title)
+                .lineSpacing(10)
                 .monospaced()
                 
         }
@@ -93,5 +67,6 @@ struct FactDisplay: View {
 
 
 #Preview {
-    FactDisplay(fact: "hauifhwui lorjeiwfhoiwajfowojafiheoifhoiw")
+    NewTinderView()
+        .environment(NetworkClient())
 }
