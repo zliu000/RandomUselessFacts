@@ -26,10 +26,7 @@ class AppModel {
     func xPressed(){
         
     }
-    
-    func infoPressed(){
-        infoValue.toggle()
-    }
+
         
         // When displaying the new randomly fetched fact
         // Check if it's already been favorited or not
