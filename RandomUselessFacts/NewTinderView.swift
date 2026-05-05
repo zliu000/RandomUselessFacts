@@ -16,8 +16,10 @@ struct NewTinderView: View {
         ZStack{
             VStack{
                 Spacer()
-                
-                FactDisplay(fact: "hauifhwui lorjeiwfhoiwajfowojafiheoifhoiw")
+                FactDisplay(fact: client.currentFact.text)
+                    .task{
+                        await client.getUselessFact(endpoint: .random)
+                    }
                 
                 Spacer()
                 
@@ -25,19 +27,15 @@ struct NewTinderView: View {
                     alignment: .center,
                     spacing: 35
                 ){
-                    // Placeholders for the buttons
-                    Rectangle()
-                        .frame(width: 100, height: 100)
-                    // Info button
-                    Rectangle()
-                        .frame(width: 50, height: 50)
-                    
-                    Rectangle()
-                        .frame(width: 100, height: 100)
+                    HeartIcon()
+                    InfoButton()
+                    XIcon()
                 }
                 .padding()
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.factSwipe)
     }
 }
 
@@ -51,8 +49,6 @@ struct FactDisplay: View {
             Text(fact)
                 .font(.title)
                 .lineSpacing(10)
-                .monospaced()
-                
         }
         .padding()
         .background(
@@ -69,4 +65,5 @@ struct FactDisplay: View {
 #Preview {
     NewTinderView()
         .environment(NetworkClient())
+        .environment(AppModel())
 }

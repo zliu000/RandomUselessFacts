@@ -8,15 +8,13 @@ struct HeartIcon: View {
             Image(systemName: "heart.fill")
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(model.value ? .gray : .red)
-                .frame(width: 70, height: 70)
-                .symbolEffect(.bounce, value: model.value)
-                .animation(.bouncy(duration: 0.5), value: model.value)
+                .foregroundStyle(model.heartValue ? .gray : .red)
+                .frame(width: 100, height: 100)
+                .symbolEffect(.bounce, value: model.heartValue)
+                .animation(.bouncy(duration: 0.5), value: model.heartValue)
                 .onTapGesture {
                     model.heartPressed()
-
                 }
-                .offset(x:-100,y:200)
         }
     }
 }

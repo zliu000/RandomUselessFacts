@@ -1,16 +1,14 @@
 import SwiftUI
 
 struct XIcon: View {
-    @State private var value = true
-    
+    @Environment(AppModel.self) private var model: AppModel
+
     var body: some View{
         HStack{
             Image(systemName: "xmark")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 60, height: 60)
-                .offset(x:100,y:200)
-
+                .frame(width: 90, height: 90)
         }
     }
 }

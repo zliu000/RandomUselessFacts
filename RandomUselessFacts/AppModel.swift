@@ -3,7 +3,8 @@ import SwiftUI
 @Observable
 class AppModel {
     private(set) var favoritedFacts: [UselessFact] = []
-    private(set) var value = true
+    private(set) var heartValue = true
+    private(set) var infoValue = true
     
     func getFavoritedFacts() -> [UselessFact]{
         return favoritedFacts
@@ -17,13 +18,18 @@ class AppModel {
         }
         return false
     }
-        func heartPressed(){
-            value.toggle()
-        }
+    
+    func heartPressed(){
+        heartValue.toggle()
+    }
         
-        func xPressed(){
-            
-        }
+    func xPressed(){
+        
+    }
+    
+    func infoPressed(){
+        infoValue.toggle()
+    }
         
         // When displaying the new randomly fetched fact
         // Check if it's already been favorited or not
