@@ -26,6 +26,10 @@ class AppModel {
     func xPressed(){
         
     }
+    
+    func infoPressed(){
+        
+    }
 
         
         // When displaying the new randomly fetched fact
