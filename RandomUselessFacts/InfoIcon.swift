@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InfoIcon: View {
-    @State var toggled = false
+    @Environment(AppModel.self) private var model: AppModel
 
     var body: some View {
         Image(systemName: "questionmark")
@@ -17,14 +17,14 @@ struct InfoIcon: View {
             .frame(width: 50, height: 50)
             .background(
                 Circle()
-                    .fill(toggled ? Color.black : Color.white)
+                    .fill(model.infoValue ? Color.black : Color.white)
                     .stroke( .black, lineWidth: 3)
             )
-            .foregroundStyle(toggled ? Color.white : Color.black)
+            .foregroundStyle(model.infoValue ? Color.white : Color.black)
             .onTapGesture {
-                toggled = !toggled
+                model.infoPressed()
             }
-            .animation(.easeIn, value: toggled)
+            .animation(.easeIn, value: model.infoValue)
     }
 }
 

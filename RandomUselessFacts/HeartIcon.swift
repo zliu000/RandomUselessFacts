@@ -8,7 +8,7 @@ struct HeartIcon: View {
             Image(systemName: "heart.fill")
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(model.heartValue ? .gray : .red)
+                .foregroundStyle(model.heartValue ? .red : .gray)
                 .frame(width: 100, height: 100)
                 .symbolEffect(.bounce, value: model.heartValue)
                 .animation(.bouncy(duration: 0.5), value: model.heartValue)

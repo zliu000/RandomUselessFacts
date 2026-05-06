@@ -3,8 +3,9 @@ import SwiftUI
 @Observable
 class AppModel {
     private(set) var favoritedFacts: [UselessFact] = []
-    private(set) var heartValue = true
-    private(set) var infoValue = true
+    private(set) var heartValue = false
+    private(set) var infoValue = false
+    private(set) var xValue = false
     
     func getFavoritedFacts() -> [UselessFact]{
         return favoritedFacts
@@ -24,11 +25,11 @@ class AppModel {
     }
         
     func xPressed(){
-        
+        xValue.toggle()
     }
     
     func infoPressed(){
-        
+        infoValue.toggle()
     }
 
         
