@@ -5,3 +5,9 @@ struct FavoritesView: View {
         
     }
 }
+
+#Preview {
+    FavoritesView()
+        .environment(NetworkClient())
+        .environment(AppModel())
+}

@@ -14,7 +14,20 @@ struct HeartIcon: View {
                 .animation(.bouncy(duration: 0.5), value: model.heartValue)
                 .onTapGesture {
                     model.heartPressed()
+                    
+//                    withAnimation(.bouncy(duration: 0.3)) {
+//                        model.heartValue = true
+//                    } completion: {
+//                        model.resetAndRefresh()
+//                    }
                 }
         }
     }
+}
+
+
+#Preview {
+    HeartIcon()
+        .environment(NetworkClient())
+        .environment(AppModel())
 }

@@ -39,7 +39,12 @@ struct NewTinderView: View {
                     XIcon()
                 }
                 .padding()
-                .onChange(of: model.heartValue) {
+                .onChange(of: model.xValue) {
+                    Task {
+                        await client.getUselessFact(endpoint: .random)
+                    }
+                }
+                .onChange(of: model.heartValue){
                     Task {
                         await client.getUselessFact(endpoint: .random)
                     }

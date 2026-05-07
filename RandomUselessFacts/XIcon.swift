@@ -9,6 +9,18 @@ struct XIcon: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 90, height: 90)
+                .symbolEffect(.bounce, value: model.xValue)
+                .animation(.bouncy(duration: 0.5), value: model.xValue)
+                .onTapGesture {
+                    model.xPressed()
+                }
         }
     }
+}
+
+
+#Preview {
+    XIcon()
+        .environment(NetworkClient())
+        .environment(AppModel())
 }
