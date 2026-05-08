@@ -8,6 +8,7 @@ class AppModel {
     private(set) var infoValue = false
     private(set) var xValue = false
     private(set) var factMove = 0
+    private(set) var factMoveY = 0
     
     func getFavoritedFacts() -> [UselessFact]{
         return favoritedFacts
@@ -29,6 +30,13 @@ class AppModel {
             self.factMove = 1000
         } completion: {
             self.factMove = 0
+            Task {
+                try await Task.sleep(for: .seconds(1))
+            }
+            self.factMoveY = -500
+            withAnimation(.easeOut(duration:1)){
+                self.factMoveY = 0
+            }
         }
     }
         
@@ -38,6 +46,13 @@ class AppModel {
             self.factMove = -1000
         } completion: {
             self.factMove = 0
+            Task {
+                try await Task.sleep(for: .seconds(1))
+            }
+            self.factMoveY = -500
+            withAnimation(.easeOut(duration:1)){
+                self.factMoveY = 0
+            }
         }
     }
     

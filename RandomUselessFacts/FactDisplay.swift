@@ -34,7 +34,7 @@ struct FactDisplay: View {
             RoundedRectangle(cornerRadius: 15.0)
         )
         .shadow(color: .gray, radius: 3, x: 5, y: 5)
-        .offset(x:CGFloat(model.factMove), y:0)
+        .offset(x:CGFloat(model.factMove), y:CGFloat(model.factMoveY))
     }
 }
 
