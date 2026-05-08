@@ -4,8 +4,10 @@ import SwiftUI
 class AppModel {
     private(set) var favoritedFacts: [UselessFact] = []
     private(set) var heartValue = false
+    private(set) var heartPress = false
     private(set) var infoValue = false
     private(set) var xValue = false
+    private(set) var factMove = 0
     
     func getFavoritedFacts() -> [UselessFact]{
         return favoritedFacts
@@ -22,14 +24,29 @@ class AppModel {
     
     func heartPressed(){
         heartValue.toggle()
+        heartPress.toggle()
+        withAnimation(.easeOut(duration: 1.15)){
+            self.factMove = 1000
+        } completion: {
+            self.factMove = 0
+        }
     }
         
     func xPressed(){
         xValue.toggle()
+        withAnimation(.easeOut(duration: 0.7)){
+            self.factMove = -1000
+        } completion: {
+            self.factMove = 0
+        }
     }
     
     func infoPressed(){
         infoValue.toggle()
+    }
+    
+    func resetAndRefresh(){
+        heartValue = false
     }
 
         
