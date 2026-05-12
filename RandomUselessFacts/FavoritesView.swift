@@ -22,12 +22,6 @@ struct FavoritesView: View {
     }
 }
 
-<<<<<<< Updated upstream
-#Preview {
-    FavoritesView()
-        .environment(NetworkClient())
-        .environment(AppModel())
-=======
 
 #Preview {
     FavoritesView()
