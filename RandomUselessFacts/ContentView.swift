@@ -11,5 +11,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(model: AppModel()).environment(AppModel())
+    ContentView(model: AppModel())
+        .environment(NetworkClient())
+        .environment(AppModel())
 }

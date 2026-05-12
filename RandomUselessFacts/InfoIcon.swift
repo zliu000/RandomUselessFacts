@@ -30,4 +30,6 @@ struct InfoIcon: View {
 
 #Preview {
     InfoIcon()
+        .environment(NetworkClient())
+        .environment(AppModel())
 }

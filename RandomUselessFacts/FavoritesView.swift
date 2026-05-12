@@ -21,9 +21,3 @@ struct FavoritesView: View {
         }
     }
 }
-
-
-#Preview {
-    FavoritesView()
->>>>>>> Stashed changes
-}
