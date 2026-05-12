@@ -47,7 +47,12 @@ struct NewTinderView: View {
                 }
                 .onChange(of: model.heartPress){
                     Task {
-                        try await Task.sleep(for: .seconds(1)) 
+                        let favoritedFact = UselessFact(id: client.currentFact.id, text: client.currentFact.text)
+                        
+                        model.addFavoritedFacts(favorite: favoritedFact)
+                        print(favoritedFact.text)
+                        
+                        try await Task.sleep(for: .seconds(1))
                         await client.getUselessFact(endpoint: .random)
                     }
                 }

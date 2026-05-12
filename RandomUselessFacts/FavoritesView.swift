@@ -14,7 +14,7 @@ struct FavoritesView: View {
                         FactDisplay(fact: favoritedFact.text)
                     }
                     .onLongPressGesture {
-                        <#code#>
+                        
                     }
                 }
             }
