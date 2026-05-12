@@ -62,6 +62,7 @@ class AppModel {
     
     func resetAndRefresh(){
         heartValue = false
+        infoValue = false
     }
 
         

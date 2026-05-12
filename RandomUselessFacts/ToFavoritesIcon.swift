@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct InfoIcon: View {
+struct ToFavoritesIcon: View {
     @Environment(AppModel.self) private var model: AppModel
+    @State private var showDetailView = false
 
     var body: some View {
-        Image(systemName: "questionmark")
+        Image(systemName: "star.square.on.square")
             .font(.title2)
             .fontWeight(.bold)
             .frame(width: 50, height: 50)
@@ -22,14 +23,24 @@ struct InfoIcon: View {
             )
             .foregroundStyle(model.infoValue ? Color.white : Color.black)
             .onTapGesture {
+                withAnimation(.bouncy(duration: 0.5)) {
+                    model.infoPressed()
+                } completion: {
+                    model.resetAndRefresh()
+                }
                 model.infoPressed()
+                showDetailView = true
             }
+            .symbolEffect(.bounce, value: model.infoValue)
             .animation(.easeIn, value: model.infoValue)
+            .navigationDestination(isPresented: $showDetailView){
+                FavoritesView()
+            }
     }
 }
 
 #Preview {
-    InfoIcon()
+    ToFavoritesIcon()
         .environment(NetworkClient())
         .environment(AppModel())
 }

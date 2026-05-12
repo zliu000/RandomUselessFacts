@@ -10,14 +10,23 @@ struct FavoritesView: View {
                     VStack(alignment: .leading){
                         Image(systemName: "star")
                             .foregroundStyle(.yellow)
-                        
                         FactDisplay(fact: favoritedFact.text)
                     }
                     .onLongPressGesture {
-                        
+                        FactDisplay(fact:favoritedFact.text)
                     }
+//                    .onLongPressGesture {
+//                        <#code#>
+//                    }
                 }
             }
         }
     }
+}
+
+
+#Preview {
+  FavoritesView()
+        .environment(NetworkClient())
+        .environment(AppModel())
 }

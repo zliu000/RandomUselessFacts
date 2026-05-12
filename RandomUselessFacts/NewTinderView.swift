@@ -35,7 +35,7 @@ struct NewTinderView: View {
                     spacing: 35
                 ){
                     HeartIcon()
-                    InfoIcon()
+                    ToFavoritesIcon()
                     XIcon()
                 }
                 .padding()
