@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UselessFact: Codable {
+struct UselessFact: Codable, Identifiable {
     var id: String
     var text: String
 }
