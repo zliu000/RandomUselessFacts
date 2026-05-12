@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FactDisplay: View {
+    @Environment(NetworkClient.self) private var client
+    @Environment(AppModel.self) private var model
     var fact: String
     
     var body: some View {
@@ -32,6 +34,12 @@ struct FactDisplay: View {
             RoundedRectangle(cornerRadius: 15.0)
         )
         .shadow(color: .gray, radius: 3, x: 5, y: 5)
+        .offset(x:CGFloat(model.factMove), y:CGFloat(model.factMoveY))
     }
 }
 
+#Preview {
+    FactDisplay(fact:"Sdsa")
+        .environment(NetworkClient())
+        .environment(AppModel())
+}

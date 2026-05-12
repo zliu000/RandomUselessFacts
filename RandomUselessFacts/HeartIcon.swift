@@ -5,6 +5,7 @@ struct HeartIcon: View {
         
     var body: some View{
         HStack{
+            
             Image(systemName: "heart.fill")
                 .resizable()
                 .scaledToFit()
@@ -13,13 +14,11 @@ struct HeartIcon: View {
                 .symbolEffect(.bounce, value: model.heartValue)
                 .animation(.bouncy(duration: 0.5), value: model.heartValue)
                 .onTapGesture {
+                withAnimation(.bouncy(duration: 0.3)) {
                     model.heartPressed()
-                    
-//                    withAnimation(.bouncy(duration: 0.3)) {
-//                        model.heartValue = true
-//                    } completion: {
-//                        model.resetAndRefresh()
-//                    }
+                } completion: {
+                    model.resetAndRefresh()
+                }
                 }
         }
     }

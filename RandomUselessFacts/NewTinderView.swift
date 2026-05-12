@@ -41,11 +41,13 @@ struct NewTinderView: View {
                 .padding()
                 .onChange(of: model.xValue) {
                     Task {
+                        try await Task.sleep(for: .seconds(0.5))
                         await client.getUselessFact(endpoint: .random)
                     }
                 }
-                .onChange(of: model.heartValue){
+                .onChange(of: model.heartPress){
                     Task {
+                        try await Task.sleep(for: .seconds(1)) 
                         await client.getUselessFact(endpoint: .random)
                     }
                 }
