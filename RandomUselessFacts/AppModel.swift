@@ -75,4 +75,10 @@ class AppModel {
         func removeFavoritedFacts(idx: Int) {
             favoritedFacts.remove(at: idx)
         }
+    
+    func removeFavoriedFacts(fact: UselessFact) {
+        favoritedFacts.removeAll { modelFact in
+            modelFact.id == fact.id
+        }
     }
+}
