@@ -13,15 +13,9 @@ struct FavoritesView: View {
                         FactDisplay(fact: favoritedFact.text)
                     }
                     .onLongPressGesture {
-<<<<<<< Updated upstream
                         FactDisplay(fact:favoritedFact.text)
-=======
+
                         appModel.removeFavoriedFacts(fact: favoritedFact)
->>>>>>> Stashed changes
-                    }
-//                    .onLongPressGesture {
-//                        <#code#>
-//                    }
                 }
             }
         }
