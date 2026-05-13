@@ -14,8 +14,9 @@ struct FavoritesView: View {
                     }
                     .onLongPressGesture {
                         FactDisplay(fact:favoritedFact.text)
-
+                        
                         appModel.removeFavoriedFacts(fact: favoritedFact)
+                    }
                 }
             }
         }
