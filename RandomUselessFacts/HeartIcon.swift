@@ -19,7 +19,7 @@ struct HeartIcon: View {
                 } completion: {
                     model.resetAndRefresh()
                 }
-                }
+            }
         }
     }
 }

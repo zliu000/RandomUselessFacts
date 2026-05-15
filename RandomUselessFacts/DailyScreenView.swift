@@ -8,8 +8,19 @@ let dailyGradient: [Color] = [
 struct DailyScreenView: View {
     @State private var client = NetworkClient()
     @State private var showDetailView = false
+    @Environment(AppModel.self) private var model
+
     var body: some View {
         ZStack{
+            Image(systemName: "heart.fill")
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(.red)
+                .frame(width: 100, height: 100)
+                .symbolEffect(.bounce, value: model.heartValue)
+                .opacity(model.dailyHeart ? 100 : 0)
+                .offset(y:-200)
+
             HStack{
                 Text("Fact of the Day!")
                     .font(.title3)
@@ -31,9 +42,17 @@ struct DailyScreenView: View {
             .padding()
             .background(Color.white)
             .border(.black, width: 5)
+            .onTapGesture(count: 2) {
+                let favoritedFact = UselessFact(id: client.currentFact.id, text: client.currentFact.text)
+                model.addFavoritedFacts(favorite: favoritedFact)
+                withAnimation(.bouncy(duration: 0.3)) {
+                    model.dailyPress()
+                }
+            }
 
             Button("Tap to meet your match"){
                 showDetailView = true
+                model.heartValueToggle()
             }
             .monospaced()
             .tint(Color.black)
@@ -48,4 +67,10 @@ struct DailyScreenView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Gradient(colors: dailyGradient))
     }
+}
+
+#Preview {
+    DailyScreenView()
+        .environment(NetworkClient())
+        .environment(AppModel())
 }

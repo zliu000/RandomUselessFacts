@@ -9,6 +9,7 @@ class AppModel {
     private(set) var xValue = false
     private(set) var factMove = 0
     private(set) var factMoveY = 0
+    private(set) var dailyHeart = false
     
     func getFavoritedFacts() -> [UselessFact]{
         return favoritedFacts
@@ -24,7 +25,7 @@ class AppModel {
     }
     
     func heartPressed(){
-        heartValue.toggle()
+        heartValueToggle()
         heartPress.toggle()
         withAnimation(.easeOut(duration: 1.15)){
             self.factMove = 1000
@@ -38,6 +39,15 @@ class AppModel {
                 self.factMoveY = 0
             }
         }
+    }
+    
+    func dailyPress(){
+        heartValueToggle()
+        dailyHeart = true
+    }
+    
+    func heartValueToggle(){
+        heartValue.toggle()
     }
         
     func xPressed(){
