@@ -10,10 +10,12 @@ struct FavoritesView: View {
                     VStack(alignment: .leading){
                         Image(systemName: "star")
                             .foregroundStyle(.yellow)
+                            .font(.title)
                         FactDisplay(fact: favoritedFact.text)
                     }
+                    .padding()
                     .onLongPressGesture {
-                        FactDisplay(fact:favoritedFact.text)
+                        
                         
                         appModel.removeFavoriedFacts(fact: favoritedFact)
                     }
