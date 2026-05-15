@@ -25,7 +25,7 @@ class AppModel {
     }
     
     func heartPressed(){
-        heartValueToggle()
+        heartValue = true
         heartPress.toggle()
         withAnimation(.easeOut(duration: 1.15)){
             self.factMove = 1000
@@ -41,14 +41,14 @@ class AppModel {
         }
     }
     
-    func dailyPress(){
-        heartValueToggle()
-        dailyHeart = true
-    }
+//    func dailyPress(){
+//        heartValue.toggle()
+//        dailyHeart = true
+//    }
     
-    func heartValueToggle(){
-        heartValue.toggle()
-    }
+//    func heartValueTurnFalse(){
+//        heartValue = false
+//    }
         
     func xPressed(){
         xValue.toggle()

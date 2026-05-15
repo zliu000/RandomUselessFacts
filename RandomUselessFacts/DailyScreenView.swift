@@ -12,14 +12,14 @@ struct DailyScreenView: View {
 
     var body: some View {
         ZStack{
-            Image(systemName: "heart.fill")
-                .resizable()
-                .scaledToFit()
-                .foregroundStyle(.red)
-                .frame(width: 100, height: 100)
-                .symbolEffect(.bounce, value: model.heartValue)
-                .opacity(model.dailyHeart ? 100 : 0)
-                .offset(y:-200)
+//            Image(systemName: "heart.fill")
+//                .resizable()
+//                .scaledToFit()
+//                .foregroundStyle(.red)
+//                .frame(width: 100, height: 100)
+//                .symbolEffect(.bounce, value: model.heartValue)
+//                .opacity(model.dailyHeart ? 100 : 0)
+//                .offset(y:-200)
 
             HStack{
                 Text("Fact of the Day!")
@@ -42,17 +42,17 @@ struct DailyScreenView: View {
             .padding()
             .background(Color.white)
             .border(.black, width: 5)
-            .onTapGesture(count: 2) {
-                let favoritedFact = UselessFact(id: client.currentFact.id, text: client.currentFact.text)
-                model.addFavoritedFacts(favorite: favoritedFact)
-                withAnimation(.bouncy(duration: 0.3)) {
-                    model.dailyPress()
-                }
-            }
+//            .onTapGesture(count: 2) {
+//                let favoritedFact = UselessFact(id: client.currentFact.id, text: client.currentFact.text)
+//                model.addFavoritedFacts(favorite: favoritedFact)
+//                withAnimation(.bouncy(duration: 0.3)) {
+//                    model.dailyPress()
+//                }
+//            }
 
             Button("Tap to meet your match"){
                 showDetailView = true
-                model.heartValueToggle()
+//                model.resetAndRefresh()
             }
             .monospaced()
             .tint(Color.black)
