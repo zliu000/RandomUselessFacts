@@ -41,15 +41,11 @@ class AppModel {
         }
     }
     
-//    func dailyPress(){
-//        heartValue.toggle()
-//        dailyHeart = true
-//    }
-    
-//    func heartValueTurnFalse(){
-//        heartValue = false
-//    }
-        
+    func dailyPress(){
+        heartValue.toggle()
+        dailyHeart = true
+    }
+
     func xPressed(){
         xValue.toggle()
         withAnimation(.easeOut(duration: 0.7)){
