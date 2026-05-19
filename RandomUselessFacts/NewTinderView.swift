@@ -36,6 +36,7 @@ struct NewTinderView: View {
                 ){
                     HeartIcon()
                     ToFavoritesIcon()
+                        .environment(model)
                     XIcon()
                 }
                 .padding()

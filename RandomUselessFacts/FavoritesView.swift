@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct FavoritesView: View {
-    @Environment(AppModel.self) private var appModel
+    @Environment(AppModel.self) private var model
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(alignment: .center) {
-                ForEach(appModel.favoritedFacts, id: \.id) { favoritedFact in
+                ForEach(model.favoritedFacts, id: \.id) { favoritedFact in
                     VStack(alignment: .leading){
                         Image(systemName: "star")
                             .foregroundStyle(.yellow)
@@ -15,9 +15,7 @@ struct FavoritesView: View {
                     }
                     .padding()
                     .onLongPressGesture {
-                        
-                        
-                        appModel.removeFavoriedFacts(fact: favoritedFact)
+                        model.removeFavoriedFacts(fact: favoritedFact)
                     }
                 }
             }
@@ -28,6 +26,5 @@ struct FavoritesView: View {
 
 #Preview {
   FavoritesView()
-        .environment(NetworkClient())
         .environment(AppModel())
 }

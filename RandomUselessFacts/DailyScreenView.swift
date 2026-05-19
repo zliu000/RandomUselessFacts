@@ -63,6 +63,8 @@ struct DailyScreenView: View {
             .offset(y:250)
             .navigationDestination(isPresented: $showDetailView){
                 NewTinderView()
+                    .environment(model)
+                    .environment(client)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -35,6 +35,7 @@ struct ToFavoritesIcon: View {
             .animation(.easeIn, value: model.infoValue)
             .navigationDestination(isPresented: $showDetailView){
                 FavoritesView()
+                    .environment(model)
             }
     }
 }

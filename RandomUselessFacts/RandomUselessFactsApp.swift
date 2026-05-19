@@ -6,7 +6,9 @@ struct RandomUselessFactsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(model: appModel)
+            ContentView()
+                .environment(appModel)
         }
     }
 }
+
